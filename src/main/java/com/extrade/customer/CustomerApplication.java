@@ -12,9 +12,9 @@ public class CustomerApplication implements WebMvcConfigurer {
 
     }
 
-    @Override
-    public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/shop").setViewName("shop");
-        registry.addViewController("/register").setViewName("register-customer");
-     }
+//    @Override
+//    public void addViewControllers(ViewControllerRegistry registry) {
+//        registry.addViewController("/shop").setViewName("shop");
+//        registry.addViewController("/register").setViewName("register-customer");
+//     }
 }

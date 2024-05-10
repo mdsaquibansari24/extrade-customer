@@ -5,3 +5,5 @@ spring:
     name: xtradecustomer
   mvc:
     static-path-pattern: /static/**
+  messages:
+    basename: errors

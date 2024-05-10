@@ -2,11 +2,90 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout/full-page-layout}">
 <head>
-    <title>Customer Registration</title>
+    <title>Signup Form Page</title>
 </head>
 <th:block layout:fragment="body">
-    <b><center>Customer Login Page</b></center>
+    <!--breadcrumb-->
+    <div class="bg-light py-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 mb-0"><a href="index.html">Home</a> <span class="mx-2 mb-0">/</span> <strong>SignUp</strong></div>
+            </div>
+        </div>
+    </div>
+    <!--/breadcrumb-->
+    <div class="site-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2 class="h3 mb-3 text-black">Customer SignUp</h2>
+                </div>
+                <div class="col-md-12">
 
+                    <form method="post" th:action="@{/customer/signup}" th:object="${customerSignupForm}">
+
+                        <div class="p-3 p-lg-5 border">
+
+
+                            <div class="form-group row">
+                                <div class="col-md-10">
+
+                                    <input type="email" class="form-control" id="emailAddress" name="emailAddress" placeholder="Email Address" th:field="*{emailAddress}"><br>
+                                    <p class="text-danger" th:if="${#fields.hasErrors('emailAddress')}" th:errors="*{emailAddress}"></p>
+
+                                </div>
+                                <div class="col-md-10">
+                                    <input type="text" class="form-control" id="mobileNo" name="mobileNo" placeholder="Mobile Number" th:field="*{mobileNo}"><br>
+                                    <p class="text-danger" th:if="${#fields.hasErrors('mobileNo')}" th:errors="*{mobileNo}"></p>
+
+                                </div>
+                                <div class="col-md-10">
+                                    <input type="password" class="form-control" id="password" name="password" placeholder="Password" th:field="*{password}" data-bs-toggle="tooltip" title="password should be 8 to 16 character!"><br>
+                                    <p class="text-danger" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
+                                </div>
+
+                                <div class="col-md-10">
+                                    <input type="password" class="form-control" id="rePassword" name="rePassword" placeholder="re-Password" th:field="*{rePassword}"><br>
+                                    <p class="text-danger" th:if="${#fields.hasErrors('rePassword')}" th:errors="*{rePassword}"></p>
+                                </div>
+                                <div class="col-md-10">
+                                    <input type="text" class="form-control" id="firstName" name="firstName" placeholder="firstName" th:field="*{firstName}"><br>
+                                    <p class="text-danger" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></p>
+                                </div>
+                                <div class="col-md-10">
+                                    <input type="text" class="form-control" id="lastName" name="lastName" placeholder="lastName" th:field="*{lastName}"><br>
+                                    <p class="text-danger" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></p>
+
+                                </div>
+                                <div class="col-md-10">
+                                    <input type="date" class="form-control" id="dob" name="dob" placeholder="dob" th:field="*{dob}"><br>
+                                    <p class="text-danger" th:if="${#fields.hasErrors('dob')}" th:errors="*{dob}"></p>
+
+                                </div>
+                                <div class="col-md-10">
+                                     <label for="male">Male :</label>
+                                    <input id="male"  type="radio" name="gender" value="M" th:field="*{gender}">
+                                    <label for="female">Female:</label>
+                                    <input id="female" type="radio" name="gender" value="F" th:field="*{gender}">
+                                    <p class="text-danger" th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}"></p>
+                                </div>
+
+
+
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-lg-2">
+                                    <input type="submit" class="btn btn-primary btn-lg btn-block" value="Register">
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
 </th:block>
 
 </html>
