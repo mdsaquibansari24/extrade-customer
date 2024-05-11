@@ -1,6 +1,6 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layout/full-page-layout.html}">
+      layout:decorate="~{layout/full-page-layout}">
 <head>
     <title>Signup Form Page</title>
 </head>
@@ -18,7 +18,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h1 class="h3 mb-3 text-black">Customer SignUp</h1>
+                    <h2 class="h3 mb-3 text-black">Customer SignUp</h2>
                 </div>
                 <div class="col-md-12">
 
@@ -30,55 +30,75 @@
                             <div class="form-group row">
                                 <div class="col-md-10">
 
-                                    <input type="email" class="form-control" id="emailAddress" name="emailAddress" placeholder="Email Address" th:field="*{emailAddress}"><br>
-                                    <p class="text-danger" th:if="${#fields.hasErrors('emailAddress')}" th:errors="*{emailAddress}"></p>
+                                    <input type="email" class="form-control" id="emailAddress" name="emailAddress" placeholder="Email Address" th:field="*{emailAddress}">
+                                    <p class="text-danger" style="font-size: small" th:if="${#fields.hasErrors('emailAddress')}" th:errors="*{emailAddress}"></p>
 
                                 </div>
+                            </div>
+                            <div class="form-group row">
                                 <div class="col-md-10">
-                                    <input type="text" class="form-control" id="mobileNo" name="mobileNo" placeholder="Mobile Number" th:field="*{mobileNo}"><br>
-                                    <p class="text-danger" th:if="${#fields.hasErrors('mobileNo')}" th:errors="*{mobileNo}"></p>
+                                    <input type="text" class="form-control" id="mobileNo" name="mobileNo" placeholder="Mobile Number" th:field="*{mobileNo}">
+                                    <p class="text-danger" style="font-size: small" th:if="${#fields.hasErrors('mobileNo')}" th:errors="*{mobileNo}"></p>
 
                                 </div>
+                            </div>
+                            <div class="form-group row">
                                 <div class="col-md-10">
-                                    <input type="password" class="form-control" id="password" name="password" placeholder="Password" th:field="*{password}" data-bs-toggle="tooltip" title="password should be 8 to 16 character and must contain alphanumeric with one special character like $,&,@,# !"><br>
-                                    <p class="text-danger" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
+                                    <input type="password" class="form-control" id="password" name="password" placeholder="Password" th:field="*{password}" data-bs-toggle="tooltip" title="password should be 8 to 16 character and must contain alphanumeric with atleast one special character like $,&,@,# !">
+                                    <p class="text-danger" style="font-size: small" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
                                 </div>
+                            </div>
+                            <div class="form-group row">
 
                                 <div class="col-md-10">
-                                    <input type="password" class="form-control" id="rePassword" name="rePassword" placeholder="re-Password" th:field="*{rePassword}" data-bs-toggle="tooltip" title="rePassword must match with password"><br>
-                                    <p class="text-danger" th:if="${#fields.hasErrors('rePassword')}" th:errors="*{rePassword}"></p>
+                                    <input type="password" class="form-control" id="rePassword" name="rePassword" placeholder="re-Password" th:field="*{rePassword}" data-bs-toggle="tooltip" title="rePassword must match with password">
+                                    <p class="text-danger" style="font-size: small" th:if="${#fields.hasErrors('rePassword')}" th:errors="*{rePassword}"></p>
                                 </div>
+                            </div>
+                            <div class="form-group row">
                                 <div class="col-md-10">
-                                    <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First Name" th:field="*{firstName}"><br>
-                                    <p class="text-danger" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></p>
+                                    <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First Name" th:field="*{firstName}">
+                                    <p class="text-danger" style="font-size: small" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></p>
                                 </div>
+                            </div>
+                            <div class="form-group row">
                                 <div class="col-md-10">
-                                    <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last Name" th:field="*{lastName}"><br>
-                                    <p class="text-danger" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></p>
+                                    <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last Name" th:field="*{lastName}">
+                                    <p class="text-danger" style="font-size: small" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></p>
 
                                 </div>
+                            </div>
+                            <div class="form-group row">
                                 <div class="col-md-10">
                                     <label for="dob">Date Of Birth</label>
-                                    <input type="date" class="form-control" id="dob" name="dob" placeholder="dob" th:field="*{dob}" data-bs-toggle="tooltip" title="dob should be in past"><br>
-                                    <p class="text-danger" th:if="${#fields.hasErrors('dob')}" th:errors="*{dob}"></p>
+                                    <input type="date" class="form-control" id="dob" name="dob" placeholder="dob" th:field="*{dob}" data-bs-toggle="tooltip" title="dob should be in past">
+                                    <p class="text-danger" style="font-size: small" th:if="${#fields.hasErrors('dob')}" th:errors="*{dob}"></p>
 
                                 </div>
+                            </div>
+                            <div class="form-group row">
                                 <div class="col-md-10">
-                                    <label for="male">Male :</label>
+                                     <label for="male">Male :</label>
                                     <input id="male"  type="radio" name="gender" value="M" th:field="*{gender}">
                                     <label for="female">Female:</label>
                                     <input id="female" type="radio" name="gender" value="F" th:field="*{gender}">
-                                    <p class="text-danger" th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}"></p>
+                                    <p class="text-danger" style="font-size: small" th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}"></p>
                                 </div>
+                            </div>
+                            <div class="form-group row">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value="Y" id="invalidCheck2" required>
                                     <label class="form-check-label" for="invalidCheck2">
                                         I have read all the <a href="#"  data-bs-toggle="modal" data-bs-target="#termAndCondition">Terms & Condition</a>
 
                                     </label>
-                                    <P class="text-danger" th:if="${#fields.hasErrors('termAndCondition')}" th:errors="*{termAndCondition}"></P>
+                                    <P class="text-danger" style="font-size: small" th:if="${#fields.hasErrors('termAndCondition')}" th:errors="*{termAndCondition}"></P>
                                 </div>
                             </div>
+
+
+
+
                             <div class="form-group row">
                                 <div class="col-lg-2">
                                     <input type="submit" class="btn btn-primary btn-lg btn-block" value="Register">
