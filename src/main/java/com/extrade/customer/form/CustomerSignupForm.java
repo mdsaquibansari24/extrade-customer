@@ -1,5 +1,6 @@
 package com.extrade.customer.form;
 
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Past;
 import jakarta.validation.constraints.Pattern;
@@ -10,10 +11,10 @@ import java.time.LocalDate;
 
 @Data
 public class CustomerSignupForm {
+    @Email
     @NotBlank
     private String emailAddress;
     @NotBlank
-    @Pattern("\"\\d{10}|(?:\\d{3}-){2}\\d{4}|\\(\\d{3}\\)\\d{3}-?\\d{4}\")
     private String mobileNo;
     @Length(min = 8, max =20)
     private String password;

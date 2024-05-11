@@ -18,7 +18,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h2 class="h3 mb-3 text-black">Customer SignUp</h2>
+                    <h1 class="h3 mb-3 text-black">Customer SignUp</h1>
                 </div>
                 <div class="col-md-12">
 
@@ -40,25 +40,26 @@
 
                                 </div>
                                 <div class="col-md-10">
-                                    <input type="password" class="form-control" id="password" name="password" placeholder="Password" th:field="*{password}" data-bs-toggle="tooltip" title="password should be 8 to 16 character!"><br>
+                                    <input type="password" class="form-control" id="password" name="password" placeholder="Password" th:field="*{password}" data-bs-toggle="tooltip" title="password should be 8 to 16 character and must contain alphanumeric with one special character like $,&,@,# !"><br>
                                     <p class="text-danger" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
                                 </div>
 
                                 <div class="col-md-10">
-                                    <input type="password" class="form-control" id="rePassword" name="rePassword" placeholder="re-Password" th:field="*{rePassword}"><br>
+                                    <input type="password" class="form-control" id="rePassword" name="rePassword" placeholder="re-Password" th:field="*{rePassword}" data-bs-toggle="tooltip" title="rePassword must match with password"><br>
                                     <p class="text-danger" th:if="${#fields.hasErrors('rePassword')}" th:errors="*{rePassword}"></p>
                                 </div>
                                 <div class="col-md-10">
-                                    <input type="text" class="form-control" id="firstName" name="firstName" placeholder="firstName" th:field="*{firstName}"><br>
+                                    <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First Name" th:field="*{firstName}"><br>
                                     <p class="text-danger" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></p>
                                 </div>
                                 <div class="col-md-10">
-                                    <input type="text" class="form-control" id="lastName" name="lastName" placeholder="lastName" th:field="*{lastName}"><br>
+                                    <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last Name" th:field="*{lastName}"><br>
                                     <p class="text-danger" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></p>
 
                                 </div>
                                 <div class="col-md-10">
-                                    <input type="date" class="form-control" id="dob" name="dob" placeholder="dob" th:field="*{dob}"><br>
+                                    <label for="dob">Date Of Birth</label>
+                                    <input type="date" class="form-control" id="dob" name="dob" placeholder="dob" th:field="*{dob}" data-bs-toggle="tooltip" title="dob should be in past"><br>
                                     <p class="text-danger" th:if="${#fields.hasErrors('dob')}" th:errors="*{dob}"></p>
 
                                 </div>
@@ -68,6 +69,14 @@
                                     <label for="female">Female:</label>
                                     <input id="female" type="radio" name="gender" value="F" th:field="*{gender}">
                                     <p class="text-danger" th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}"></p>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="Y" id="invalidCheck2" required>
+                                    <label class="form-check-label" for="invalidCheck2">
+                                        I have read all the <a href="#"  data-bs-toggle="modal" data-bs-target="#termAndCondition">Terms & Condition</a>
+
+                                    </label>
+                                    <P class="text-danger" th:if="${#fields.hasErrors('termAndCondition')}" th:errors="*{termAndCondition}"></P>
                                 </div>
 
 
@@ -82,6 +91,24 @@
 
                     </form>
 
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="termAndCondition" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Terms And Conditions</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    please read the term and condition before accepting them.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Understood</button>
                 </div>
             </div>
         </div>
