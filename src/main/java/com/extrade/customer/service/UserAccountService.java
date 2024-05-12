@@ -1,7 +1,10 @@
 package com.extrade.customer.service;
 
+import com.extrade.customer.dto.UserRegistrationDto;
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @FeignClient(name="userAccountService", url ="${userAccountService.url}/account")
@@ -17,5 +20,6 @@ public interface UserAccountService {
 
     //now we will inject this service into CustomerSignupFormValidator and into controller class
 
-
+    @PostMapping(value="/customer", consumes = {MediaType.APPLICATION_JSON_VALUE},produces = {MediaType.APPLICATION_JSON_VALUE})
+    Long registerUser(UserRegistrationDto userRegistrationDto);
 }

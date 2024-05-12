@@ -86,13 +86,15 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="Y" id="invalidCheck2" required>
-                                    <label class="form-check-label" for="invalidCheck2">
-                                        I have read all the <a href="#"  data-bs-toggle="modal" data-bs-target="#termAndCondition">Terms & Condition</a>
+                                <div class="input-checkbox">
+                                    <input type="checkbox" value="Y" id="termAndCondition" name="termAndCondition">
+                                    <label for="termAndCondition">
+                                        <span></span>
+                                        I've read and accept the <a href="#" data-toggle="modal" data-target="#termsAndConditions">terms & conditions</a>
 
                                     </label>
-                                    <P class="text-danger" style="font-size: small" th:if="${#fields.hasErrors('termAndCondition')}" th:errors="*{termAndCondition}"></P>
+                                    <p class="text-danger" th:if="${#fields.hasErrors('termAndCondition')}"
+                                       th:errors="*{termAndCondition}"></p>
                                 </div>
                             </div>
 
@@ -105,27 +107,25 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="modal fade" id="termsAndConditions" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="termsAndConditionsLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="termsAndConditionsLabel">Terms and Conditions</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Please read the terms and conditions before accepting them.
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
                     </form>
 
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="termAndCondition" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">Terms And Conditions</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    please read the term and condition before accepting them.
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Understood</button>
                 </div>
             </div>
         </div>

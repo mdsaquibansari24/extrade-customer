@@ -1,0 +1,17 @@
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/full-page-layout}">
+
+<head>
+    <title>with breadcrumb</title>
+</head>
+<th:block layout:fragment="body">
+     <center><p>Hello <span th:text="${userName}">name</span> ! you
+         successfully registered with xtrade platform with <span th:text="${emailAddress}">emailAddress</span>
+         <span th:text="${mobileNo}">mobileNo</span>
+         <span th:text="${customerId}">customerId</span>
+     </p>
+     </center>
+
+</th:block>
+</html>
