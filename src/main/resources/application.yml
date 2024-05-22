@@ -6,7 +6,7 @@ spring:
   mvc:
     static-path-pattern: /static/**
   messages:
-    basename: errors
+    basename: errors,messages
 
 userAccountService:
   url: http://localhost:8090
