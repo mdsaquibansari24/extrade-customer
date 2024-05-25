@@ -52,7 +52,7 @@ public class UserAccountServiceFeignConfiguration {    //we are writing decoder
               if(response.status()== HttpStatus.NOT_FOUND.value()){   //404
                   userAccountServiceException= new UserAccountNotFoundException(errorMessage.getErrorCode(), errorMessage.getErrorMessage());
                   
-              } else if (response.status()==HttpStatus.ALREADY_REPORTED.value()) { //208
+              } else if (response.status()==HttpStatus.GONE.value()) { //410
                   userAccountServiceException=new UserAccountAlreadyActivatedException(errorMessage.getErrorCode(), errorMessage.getErrorMessage());
 
               } else if (response.status()==HttpStatus.BAD_REQUEST.value()) {  //400

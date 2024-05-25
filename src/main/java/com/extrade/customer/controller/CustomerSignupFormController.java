@@ -100,8 +100,8 @@ public class CustomerSignupFormController {
         AccountVerificationStatusDto accountVerificationStatusDto=null;
         String signupStatusMessage=null;
 
-        if(mobileOTPVerificationFormValidator.supports((mobileOTPVerificationFormValidator.getClass()))){
-            mobileOTPVerificationFormValidator.validate(mobileOTPVerificationFormValidator,errors);
+        if(mobileOTPVerificationFormValidator.supports((mobileOTPVerificationForm.getClass()))){
+            mobileOTPVerificationFormValidator.validate(mobileOTPVerificationForm,errors);
             if(errors.hasErrors()){
                 return "customer-signup-otp-verification";
             }
@@ -152,7 +152,7 @@ public class CustomerSignupFormController {
         String outcome="signup-status";
         try {
             accountVerificationStatusDto = userAccountService.verifyOTP(userAccountId, verificationCode, "VERIFICATION_TYPE_EMAIL");
-            log.info("upon clicking the email link userAccountStatus: {}",accountVerificationStatusDto.getAccountStatus());
+            //log.info("upon clicking the email link userAccountStatus: {}",accountVerificationStatusDto.getAccountStatus());
             if (accountVerificationStatusDto.getAccountStatus().equals(XtradeConstrants.USER_ACCOUNT_ACTIVE)) {
                    signupStatusMessage=messageSource.getMessage("userAccount.alreadyActivated",null,locale);
             }else if(accountVerificationStatusDto.getMobileVerificationStatus()==0){

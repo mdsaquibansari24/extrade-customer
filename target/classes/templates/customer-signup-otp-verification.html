@@ -10,17 +10,18 @@
         <div class="container">
             <div class="bg-light py-3">
                 <div class="container">
-                    <div class="row">
-                        <h2 class="h3 mb-3 text-black">Verify OTP</h2>
+                    <div class="row col-md-4">
+                        <h2 class="h3 mb-3 text-black"><b>Verify OTP</b></h2>
                     </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-8">
-                    <p th:text="${signupStatusMessage}" th:if="${signupStatusMessage ==null}">
+                <div class="col-md-10">
+                    <div class="billing-details">
+                    <p th:if="${signupStatusMessage ==null}">
                         Dear <b th:text="${MobileOTPVerificationForm.customerName}">customer</b>, you have signed up with us,we have send
-                        you a link to your email address: <span th:text="${MobileOTPVerificationForm.verificationEmailAddress}">emailAddress</span>, and
-                        an OTP to your mobile number: <span th:text="${MobileOTPVerificationForm.verificationMobileNo}">mobileNo</span>
+                        you a link to your email address: <span th:text="${MobileOTPVerificationForm.verificationEmailAddress}"><b>emailAddress</b></span>, and
+                        an OTP to your mobile number: <span th:text="${MobileOTPVerificationForm.verificationMobileNo}"><b>mobileNo</b></span>
                         ,please verify your emailAddress by clicking on the link send, and also proceed on verifying your number by
                         providing otp code below.
 
@@ -33,8 +34,13 @@
 
      <form method="POST" th:action="@{/customer/signup/verifyMobileOTP}"  th:object="${MobileOTPVerificationForm}">
          <!--need to write global error here-->
-         <div class="row justify-content-md-center">
+         <div class="row justify-content-md-center" th:if="${#fields.hasErrors('global')}">
              <div class="col-md-10">
+                 <p class="text-danger" th:errors="*{global}"></p>
+             </div>
+         </div>
+
+
                  <div class="billing-details">
                      <div class="form-group">
                          <input class="input" type="text" name="otpCode" placeholder="OTP Number">
@@ -43,12 +49,13 @@
                      <input type="hidden" name="userAccountId" th:field="*{userAccountId}">
                      <input type="hidden" name="verificationEmailAddress" th:field="*{verificationEmailAddress}">
                      <input type="hidden" name="verificationMobileNo" th:field="*{verificationMobileNo}">
-                     <button class="primary-btn order-submit" type="submit">Verify</button>
+                     <button class="btn btn-primary btn-sm" type="submit">Verify</button>
                  </div>
-             </div>
-         </div>
+
+
 
      </form>
+
 
 </th:block>
 </html>
