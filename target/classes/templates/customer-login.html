@@ -1,0 +1,83 @@
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/full-page-layout}">
+<head>
+    <title>Login Page</title>
+</head>
+<th:block layout:fragment="body">
+    <!--breadcrumb-->
+    <div class="bg-light py-3">
+        <div class="container">
+            <div class="row clo-md-4">
+                <div class="col-md-12 mb-0"><a href="index.html">Home</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">login</strong></div>
+            </div>
+        </div>
+    </div>
+    <!--/breadcrumb-->
+    <form method="POST" id="loginForm" th:action="@{/customer/j_login}"><!--for displaying this jsp page we need forwarding controller becoz it does not have any data at all,we also given id to the form-->
+        <div class="row px-xl-5 justify-content-md-center">
+            <div class="col-md-5 col-md-offset-3">
+                <p class="text-danger" th:if="${param.error!=null && param.error[0]=='bad'}">EmailAddress or Password entered is incorrect</p>
+                <p class="text-danger" th:if="${param.error!=null && param.error[0]=='locked'}">your account is locked,please proceed to activate it</p>
+                <!--1.param is a special thymeleaf object that provides access to the "query
+                parameters" present in the current request URL(http://localhost:8088/customer/login?error=bad).
+                2. Error Handling Flow:
+                    (a). When an authentication failure occurs (such as incorrect credentials or
+                     disabled account), Spring Security redirects the user back to the login page
+                     with a specific error parameter in the URL.
+                     (b).Thymeleaf then checks for the presence of this error parameter
+                     (param.error) in the URL to dynamically display the appropriate error
+                     message to the user on the login page.
+                -->
+            </div>
+        </div>
+        <div class="row justify-content-md-center">
+
+            <div class="col-md-5 col-md-offset-3">
+                <div class="billing-details">
+                    <div class="form-group">
+                        <input class="input" type="email" id="emailAddress" name="j_username"
+                               placeholder="Email Address" maxlength="50"> <!--for each control we can add an ID for performing javascript validation using jQuery-->
+                        <p class="text-danger" id="emailAddress_error"></p>
+                    </div>
+                    <div class="form-group">
+                        <input class="input" type="password" id="password" name="j_password"
+                               placeholder="Password" maxlength="16">
+                        <p class="text-danger" id="password_error"></p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-md-center">
+            <div class="col-md-5 col-md-offset-3">
+                <button class="btn btn-primary btn-sm" type="submit">Login</button>
+            </div>
+        </div>
+
+    </form>
+
+    <script th:inline="javascript">
+
+       $(document).ready(function(){
+           $("#loginForm").submit(function(e) {
+              var f = true;
+              if($("#emailAddress").val().trim()==''){
+                  $("#emailAddress_error").text("Email Address is blank");
+                  f = false;
+              }
+              if($("#password").val().trim()==''){
+                 $("#password_error").text("Password is blank");
+                 f=false;
+              }
+              if(f==false){
+                 e.preventDefault();
+              }
+           });
+       });
+
+    </script>
+</th:block>
+</html>
+
+<!-- e.preventDefault(); -> dont submit the form -->

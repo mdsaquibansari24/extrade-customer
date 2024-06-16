@@ -1,6 +1,7 @@
 package com.extrade.customer.service;
 
 import com.extrade.customer.dto.AccountVerificationStatusDto;
+import com.extrade.customer.dto.UserAccountDto;
 import com.extrade.customer.dto.UserRegistrationDto;
 import com.extrade.customer.feign.config.UserAccountServiceFeignConfiguration;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -44,4 +45,7 @@ public interface UserAccountService {
     AccountVerificationStatusDto accountVerificationStatusDto(@PathVariable("userAccountId") Long userAccountId);
 
 
+    //security impl: when u input emailAddress, it will bring out password and verify it
+    @GetMapping(value = "/details", consumes = {MediaType.APPLICATION_JSON_VALUE})
+    UserAccountDto getUserByEmailAddress(@RequestParam("emailAddress") String emailAddress);
 }
